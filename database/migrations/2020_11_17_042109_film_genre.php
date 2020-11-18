@@ -6,11 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class FilmGenre extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
         Schema::create('film_genre', function (Blueprint $table) {
