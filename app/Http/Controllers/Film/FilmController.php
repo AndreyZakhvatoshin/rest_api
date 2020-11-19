@@ -6,11 +6,12 @@ use App\Models\Film;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\FilmRequest;
 
 class FilmController extends Controller
 {
 
-    public function index(Request $request)
+    public function index(FilmRequest $request)
     {
         if (request()->filled('filter')) {
             [$criteria, $value] = explode(':', request('filter'));
@@ -33,7 +34,7 @@ class FilmController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FilmRequest $request)
     {
         return Film::create($request->all());
     }
@@ -56,7 +57,7 @@ class FilmController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(FilmRequest $request, $id)
     {
         $film = Film::findOrFail($id);
         $film->update($request->all());
